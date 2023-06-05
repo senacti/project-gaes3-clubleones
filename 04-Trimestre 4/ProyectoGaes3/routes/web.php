@@ -45,9 +45,9 @@ Route::get('/CrearProgra', function () {
     return view('CrearProgra');
 });
 
-Route::get('/Dashboard', function () {
-    return view('Dashboard');
-});
+// Route::get('/Dashboard', function () {
+//     return view('Dashboard');
+// });
 
 Route::get('/EditarEquipo', function () {
     return view('EditarEquipo');
@@ -73,9 +73,9 @@ Route::get('/Landing', function () {
     return view('Landing');
 });
 
-Route::get('/login', function () {
-    return view('Login');
-});
+// Route::get('/login', function () {
+//     return view('Login');
+// });
 
 Route::get('/Partidos', function () {
     return view('Partidos');
@@ -97,9 +97,9 @@ Route::get('/RegistrarTest', function () {
     return view('RegistrarTest');
 });
 
-Route::get('/registro', function () {
-    return view('Registro');
-});
+// Route::get('/registro', function () {
+//     return view('Registro');
+// });
 
 Route::get('/VerEntre', function () {
     return view('VerEntre');
@@ -107,4 +107,15 @@ Route::get('/VerEntre', function () {
 
 Route::get('/VerPerfiles', function () {
     return view('VerPerfiles');
+});
+
+use App\Http\Controllers\Auth\LoginRegisterController;
+
+Route::group(['namespace' => 'App\Http\Controllers\Auth'], function () {
+    Route::get('/register', [LoginRegisterController::class, 'register'])->name('register');
+    Route::post('/store', [LoginRegisterController::class, 'store'])->name('store');
+    Route::get('/login', [LoginRegisterController::class, 'login'])->name('login');
+    Route::post('/authenticate', [LoginRegisterController::class, 'authenticate'])->name('authenticate');
+    Route::get('/dashboard', [LoginRegisterController::class, 'dashboard'])->name('dashboard');
+    Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout');
 });
