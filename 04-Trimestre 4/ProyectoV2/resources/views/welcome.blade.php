@@ -1,0 +1,3 @@
+@extends('landing')
+
+{{-- url('/dashboard') --}}
