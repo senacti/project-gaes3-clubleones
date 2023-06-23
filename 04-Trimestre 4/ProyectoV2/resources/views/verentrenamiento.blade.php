@@ -14,8 +14,7 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
-                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
+                    <a class="navbar-brand" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -82,43 +81,75 @@
         </div>
     </div>
 
+        
 {{-- html del contenido de la páginaa --}}
 
-        <div class="container">
-            <h1 class="text-center">Crear Ejercicio</h1>
-            <form action="{{route("ejercicio.create", ['id_planacondicionamiento' => $id_planacondicionamiento])}}" method="POST" enctype="multipart/form-data">
-              @csrf
-              <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="imagen" class="form-label">Imagen</label>
-                <input type="file" class="form-control" id="imagen" name="imagen" required>
-              </div>
-              <div class="mb-3">
-                <label for="descripcion" class="form-label">Descripcion</label>
-                <input type="text" class="form-control" id="descripcion" name="descripcion" required>
-              </div>
-              <div class="mb-3">
-                <label for="cantidad" class="form-label">Cantidad</label>
-                <input type="number" class="form-control" id="cantidad" name="cantidad" required>
-              </div>
-              <div class="mb-3">
-                <label for="segundos" class="form-label">Segundos</label>
-                <input type="number" class="form-control" id="segundos" name="segundos" required>
-              </div>   
-              <div class="mb-3">
-                <label for="id_planacondicionamiento" class="form-label">id_planacondicionamiento</label>
-                {{-- <input type="number" class="form-control" id="id_equipo" name="id_equipo" required> --}}
-                <input type="hidden" name="id_planacondicionamiento" value="{{ $ejercicio->id_planacondicionamiento }}">
+        
+{{-- @foreach ($entrenamiento as $item)
+    <div class="tabla-principal container mt-3">
+      <div class="row-tabla row ">
+        <div class="col-tabla col-md-6 text-center align-items-center">{{$item->fecha}}</div>
+      </div>
+  <div class="row row-tabla">
+    <div class="col-tabla col-md-3 text-center align-items-center">{{$item->hora}}</div>
+    
+  </div>
+  <div class="row row-tabla">
+    <div class="col-tabla col-md-3 text-center align-items-center">{{$item->tipo_entrenamiento}}</div>
+   
+  </div>
 
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Crear</button>
-              </div>
-            </form>
-          </div>
+<div class="row-tabla row">
+<div class="col-tabla col-md-6 text-center align-items-center">{{$item->descripcion}}</div>
+</div>
+<div class="row row-tabla">
+  <div class="col-tabla col-2 text-center align-items-center"><a href="{{url('crearentrenamiento')}}"><button type="button" class="btn btn-logout btn-outline-primary">Crear</button></a></div>
+
+  <div class="col-tabla col-2 text-center align-items-center"><a href="{{ route('entrenamiento.edit', ['id_entrenamiento' => $item->id_entrenamiento]) }}"><button type="button" class="btn btn-logout btn-outline-primary">Editar</button></a></div>
+
+  <div class="col-tabla col-2 text-center align-items-center"><a href="{{url('eliminarentrenamiento')}}"><button type="button" class="btn btn-logout btn-outline-primary">Eliminar</button></a></div>
+</div>
+</div>
+@endforeach --}}
+
+<div class="container-fluid">
+  <h1 class="text-center">Entrenamientos</h1>
+  <a href="{{url('crearentrenamiento')}}"><button type="button" class="btn btn-logout btn-outline-primary">Crear entrenamiento</button></a>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id entrenamiento</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>
+          <th scope="col">Tipo de entrenamiento</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach ($entrenamiento as $item)
+        <tr>
+          <td>{{$item->id_entrenamiento}}</td>
+          <td>{{$item->fecha}}</td>
+          <td>{{$item->hora}}</td>
+          <td>{{$item->tipo_entrenamiento}}</td>
+          <td>{{$item->descripcion}}</td>
+          <td><a href="{{ route('entrenamiento.edit', ['id_entrenamiento' => $item->id_entrenamiento]) }}"><button type="button" class="btn btn-logout btn-outline-primary">Editar</button></a></td>
+          <td><form action="{{ route('entrenamiento.delete', ['id_entrenamiento' => $item->id_entrenamiento]) }}" method="post">
+  @method("delete")
+  @csrf
+  <button type="submit" class="btn btn-logout btn-outline-primary">Eliminar</button>
+</form></td>
+        </tr>
+        @endforeach
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

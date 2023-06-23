@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use App\Models\equipo;
 
 class CrudEquipoController extends Controller
@@ -12,6 +14,12 @@ class CrudEquipoController extends Controller
     public function index(){
         $equipo = equipo::all();
         return view('verequipo')->with("equipo", $equipo);
+    }
+
+    public function pdf(){
+        $equipo=equipo::all();
+        $pdf = Pdf::loadView('equipopdf', compact('equipo'));
+        return $pdf->stream();
     }
     
     public function create(Request $request){

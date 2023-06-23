@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\ejercicio;
 use App\Models\planacondicionamiento;
 
+use Illuminate\Support\Facades\Storage;
+
 class CrudEjercicioController extends Controller
 {
     public function index($id_planacondicionamiento)
@@ -34,17 +36,11 @@ public function create(Request $request, $id_planacondicionamiento)
     // dd($request);
     if ($request->hasFile('imagen')) {
         $imagen = $request->file('imagen');
-        $ruta = $imagen->store('public');
-        // $ruta = str_replace('images/', '', $ruta);
+        $rutaimagen = $imagen->store('public/images');
+        $ruta = str_replace('public/images/', '', $rutaimagen);
+        // $ruta = Storage::url($rutaimagen);
         $ejercicio->imagen = $ruta;
-    }
-    // if ($request->hasFile('imagen')) {
-    //     $imagen = $request->file('imagen');
-    //     $ruta = $imagen->storeAs('public/images');
-    //     $ruta = str_replace('public/', '', $ruta);
-    //     $ejercicio->imagen = $ruta;
-    // }
-    
+    }  
     $ejercicio->descripcion = $request->descripcion;
     $ejercicio->cantidad = $request->cantidad;
     $ejercicio->segundos = $request->segundos;
@@ -58,11 +54,11 @@ public function create(Request $request, $id_planacondicionamiento)
     {
         $item = ejercicio::findOrFail($id_ejercicio);
     
-        $ejercicio->nombre = $request->nombre;
-        $ejercicio->imagen = $request->imagen;
-        $ejercicio->descripcion = $request->descripcion;
-        $ejercicio->cantidad = $request->cantidad;
-        $ejercicio->segundos = $request->segundos;
+        $item->nombre = $request->nombre;
+        $item->imagen = $request->imagen;
+        $item->descripcion = $request->descripcion;
+        $item->cantidad = $request->cantidad;
+        $item->segundos = $request->segundos;
         $item->id_planacondicionamiento = $request->id_planacondicionamiento;
     
         $item->save();

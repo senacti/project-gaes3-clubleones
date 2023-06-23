@@ -62,6 +62,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Auth'], function () {
 
 // Rutas del controlador del crud que hace alucion a los campeonatos
 
+Route::get('/vercampeonato/campeonatopdf', [App\Http\Controllers\CrudController::class, 'pdf'])->name('campeonato.pdf');
+
 Route::get('/crearcampeonato', function () {
     return view('crearcampeonato');
 });
@@ -93,6 +95,8 @@ Route::put('/programacion/{id_programacion}', [App\Http\Controllers\CrudPrograma
 Route::delete('/programacion/{id_programacion}/delete', [App\Http\Controllers\CrudProgramacionController::class, 'delete'])->name('programacion.delete');
 
 // Rutas del controlador del crud que hace alucion a los equipos
+
+Route::get('/verequipo/equipopdf', [App\Http\Controllers\CrudEquipoController::class, 'pdf'])->name('equipo.pdf');
 
 Route::get('/crearequipo', function () {
     return view('crearequipo');
@@ -186,6 +190,8 @@ Route::delete('/test/{id_test}/delete', [App\Http\Controllers\CrudTestController
 
 // Rutas del controlador del crud que hace alucion a los planes de acondicionamiento que se registran
 
+Route::get('/verplanacondicionamiento/planacondicionamientopdf', [App\Http\Controllers\CrudPlanacondicionamientoController::class, 'pdf'])->name('planacondicionamiento.pdf');
+
 Route::get('/crearplanacondicionamiento', function () {
     return view('crearplanacondicionamiento');
 });
@@ -214,3 +220,19 @@ Route::get('editarejercicio/{id_ejercicio}', [App\Http\Controllers\CrudEjercicio
 Route::put('editarejercicio/{id_ejercicio}', [App\Http\Controllers\CrudEjercicioController::class, 'update'])->name('ejercicio.update');
 
 Route::delete('eliminarejercicio/{id_ejercicio}', [App\Http\Controllers\CrudEjercicioController::class, 'delete'])->name('ejercicio.delete');
+
+// Rutas del controlador del crud que hace alucion a los entrenamientos que se registran
+
+Route::get('/crearentrenamiento', function () {
+    return view('crearentrenamiento');
+});
+
+Route::get('/verentrenamiento', [App\Http\Controllers\CrudentrenamientoController::class, 'index'])->name('entrenamiento.index');
+
+Route::post('/crearentrenamiento', [App\Http\Controllers\CrudentrenamientoController::class, 'create'])->name('entrenamiento.create');
+
+Route::get('/entrenamiento/{id_entrenamiento}/edit', [App\Http\Controllers\CrudentrenamientoController::class, 'edit'])->name('entrenamiento.edit');
+
+Route::put('/entrenamiento/{id_entrenamiento}', [App\Http\Controllers\CrudentrenamientoController::class, 'update'])->name('entrenamiento.update');
+
+Route::delete('/entrenamiento/{id_entrenamiento}/delete', [App\Http\Controllers\CrudentrenamientoController::class, 'delete'])->name('entrenamiento.delete');

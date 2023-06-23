@@ -14,8 +14,8 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                    <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
+                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
+                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -56,10 +56,7 @@
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <a href="../campeonatos/crearcampeonato.html"><div class="accordion-body">Crear campeonato</div></a>
-                <div class="accordion-body">Crear programación</div>
-                <div class="accordion-body">Agregar equipo</div>
-                <div class="accordion-body">Crear partido</div>
+                <a href="{{url('verentrenamiento')}}"><div class="accordion-body">Entrenamientos</div></a>
               </div>
             </div>
             <div class="accordion-item">
@@ -80,7 +77,7 @@
               @csrf
           </form>
           
-          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</button>
+          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</button>
           </div>
         </div>
     </div>
@@ -99,34 +96,34 @@
               </div>
               <div class="mb-3">
                 <label for="categoria" class="form-label">Categoría</label>
-                <input type="text" class="form-control" id="categoria" name="categoria" required>
+                <input type="text" class="form-control" id="categoria" name="categoria" value="{{ $campeonato->categoria }}" required>
               </div>
               <div class="mb-3">
                 <label for="modo" class="form-label">Modo</label>
-                <input type="text" class="form-control" id="modo" name="modo" required>
+                <input type="text" class="form-control" id="modo" name="modo" value="{{ $campeonato->modo }}" required>
               </div>
               <div class="mb-3">
                 <label for="direccion" class="form-label">Dirección</label>
-                <input type="text" class="form-control" id="direccion" name="direccion" required>
+                <input type="text" class="form-control" id="direccion" name="direccion" value="{{ $campeonato->direccion }}" required>
               </div>
               <div class="mb-3">
-                <label for="precioInscripcion" class="form-label">Precio de Inscripción</label>
-                <input type="number" class="form-control" id="precioInscripcion" name="precio_inscripcion" required>
+                <label for="precio_inscripcion" class="form-label">Precio de Inscripción</label>
+                <input type="number" class="form-control" id="precio_inscripcion" name="precio_inscripcion" value="{{ $campeonato->precio_inscripcion }}" required>
               </div>
               <div class="mb-3">
-                <label for="valorPremiacion" class="form-label">Valor de Premiación</label>
-                <input type="number" class="form-control" id="valorPremiacion" name="valor_premiacion" required>
+                <label for="valor_premiacion" class="form-label">Valor de Premiación</label>
+                <input type="number" class="form-control" id="valor_premiacion" name="valor_premiacion" value="{{ $campeonato->valor_premiacion }}" required>
               </div>
               <div class="mb-3">
-                <label for="cantidadEquipos" class="form-label">Cantidad de Equipos</label>
-                <input type="number" class="form-control" id="cantidadEquipos" name="cantidad_equipos" required>
+                <label for="cantidad_equipos" class="form-label">Cantidad de Equipos</label>
+                <input type="number" class="form-control" id="cantidad_equipos" name="cantidad_equipos" value="{{ $campeonato->cantidad_equipos }}" required>
               </div>
               <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" id="descripcion" name="descripcion" required></textarea>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ $campeonato->descripcion }}" required>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
               </div>
             </form>
           </div>

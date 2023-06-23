@@ -13,7 +13,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="fondo container-fluid">
           <div class="fondo d-flex align-items-center">
-            <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
+            {{-- <a class="navbar-brand" href="{{url('/')}}">LOGO</a> --}}
             <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
           </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,11 +40,11 @@
         <div class="row">
             <div class="col-md-6 col-lg-5">
                 <h1 class="title display-4">Entrenamientos</h1>
-                <p class="text lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur ullam dolore nostrum eveniet aliquam hic molestiae sit sapiente est, officia molestias eligendi consequuntur accusantium dolorum obcaecati harum eum dolores fuga. 
+                <p class="text lead">Club Leones ofrece el servicio de entrenamientos para las personas del sector interesadas en practicar y mejorar sus habilidades en el micro-futbol.
                 </p>
             </div>
             <div class="col-md-6 col-lg-7">
-                <img class="img img-fluid" src="../imagenes/DIFERENCIASART.png" alt="">
+                <img class="img img-fluid" src="../imagenes/entrenamiento.png" alt="">
             </div>
         </div>
     </div>

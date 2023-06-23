@@ -14,8 +14,8 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                    <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
+                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
+                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -56,10 +56,8 @@
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <a href="../campeonatos/crearcampeonato.html"><div class="accordion-body">Crear campeonato</div></a>
-                <div class="accordion-body">Crear programación</div>
-                <div class="accordion-body">Agregar equipo</div>
-                <div class="accordion-body">Crear partido</div>
+                <a href="{{url('verentrenamiento')}}"><div class="accordion-body">Entrenamientos</div></a>
+
               </div>
             </div>
             <div class="accordion-item">
@@ -80,7 +78,7 @@
               @csrf
           </form>
           
-          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</button>
+          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</button>
           </div>
         </div>
     </div>
@@ -88,7 +86,7 @@
 {{-- html del contenido de la páginaa --}}
 
         <div class="container">
-            <h1 class="text-center">Actualizar Equipo</h1>
+            <h1 class="text-center">Actualizar equipo</h1>
             <form action="{{ route('equipo.update', ['id_equipo' => $equipo->id_equipo]) }}" method="post">
                 @method('PUT')
                 @csrf
@@ -98,26 +96,26 @@
               </div>
               <div class="mb-3">
                 <label for="color_equipacion" class="form-label">Color de la equipación</label>
-                <input type="text" class="form-control" id="color_equipacion" name="color_equipacion" required>
+                <input type="text" class="form-control" id="color_equipacion" name="color_equipacion" value="{{ $equipo->color_equipacion }}" required>
               </div>
               <div class="mb-3">
                 <label for="color_equipacion2" class="form-label">Color de la equipación 2</label>
-                <input type="text" class="form-control" id="color_equipacion2" name="color_equipacion2" required>
+                <input type="text" class="form-control" id="color_equipacion2" name="color_equipacion2" value="{{ $equipo->color_equipacion2 }}" required>
               </div>
               <div class="mb-3">
                 <label for="cantidad_jugadores" class="form-label">Cantidad de jugadores</label>
-                <input type="text" class="form-control" id="cantidad_jugadores" name="cantidad_jugadores" required>
+                <input type="text" class="form-control" id="cantidad_jugadores" name="cantidad_jugadores" value="{{ $equipo->cantidad_jugadores }}" required>
               </div>
               <div class="mb-3">
                 <label for="pago_inscripcion" class="form-label">Pago de inscripción</label>
-                <input type="text" class="form-control" id="pago_inscripcion" name="pago_inscripcion" required>
+                <input type="text" class="form-control" id="pago_inscripcion" name="pago_inscripcion" value="{{ $equipo->pago_inscripcion }}" required>
               </div>   
               <div class="mb-3">
                 <label for="id_campeonato" class="form-label">id_campeonato</label>
-                <input type="number" class="form-control" id="id_campeonato" name="id_campeonato" required>
+                <input type="number" class="form-control" id="id_campeonato" name="id_campeonato" value="{{ $equipo->id_campeonato }}" required>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
               </div>
             </form>
           </div>

@@ -14,8 +14,8 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                    <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
+                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
+                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -56,10 +56,8 @@
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <a href="../campeonatos/crearcampeonato.html"><div class="accordion-body">Crear campeonato</div></a>
-                <div class="accordion-body">Crear programación</div>
-                <div class="accordion-body">Agregar equipo</div>
-                <div class="accordion-body">Crear partido</div>
+                <a href="{{url('verentrenamiento')}}"><div class="accordion-body">Entrenamientos</div></a>
+
               </div>
             </div>
             <div class="accordion-item">
@@ -80,21 +78,23 @@
               @csrf
           </form>
           
-          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</button>
+          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</button>
           </div>
         </div>
     </div>
 <div class="container-fluid">
   <h1 class="text-center">Equipo</h1>
   <a href="{{url('crearequipo')}}"><button type="button" class="btn btn-logout btn-outline-primary">Crear equipo</button></a>
+  <a href="{{url('/verequipo/equipopdf')}}"><button type="button" class="btn btn-logout btn-outline-primary">Ver reporte equipos</button></a>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col"></th>
+          <th scope="col">Id equipo</th>
           <th scope="col">Nombre</th>
-          <th scope="col">Color equipacion 1</th>
-          <th scope="col">Color equipacion 2</th>
+          <th scope="col">Color equipación 1</th>
+          <th scope="col">Color equipación 2</th>
           <th scope="col">Cantidad de jugadores</th>
           <th scope="col">Pago de inscripción</th>
           <th scope="col">id_campeonato</th>
@@ -104,6 +104,7 @@
       @foreach ($equipo as $item)
         <tr>
           <td><a href="{{ url('verjugador', ['id_equipo' => $item->id_equipo]) }}"><button type="button" class="btn btn-logout btn-outline-primary">Jugadores</button></a></td>
+          <td>{{$item->id_equipo}}</td>
           <td>{{$item->nombre}}</td>
           <td>{{$item->color_equipacion}}</td>
           <td>{{$item->color_equipacion2}}</td>

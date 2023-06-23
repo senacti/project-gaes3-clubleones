@@ -14,8 +14,8 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                    <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
+                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
+                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -56,10 +56,8 @@
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <a href="../campeonatos/crearcampeonato.html"><div class="accordion-body">Crear campeonato</div></a>
-                <div class="accordion-body">Crear programación</div>
-                <div class="accordion-body">Agregar equipo</div>
-                <div class="accordion-body">Crear partido</div>
+                <a href="{{url('verentrenamiento')}}"><div class="accordion-body">Entrenamientos</div></a>
+
               </div>
             </div>
             <div class="accordion-item">
@@ -80,71 +78,36 @@
               @csrf
           </form>
           
-          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</button>
+          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</button>
           </div>
         </div>
-    </div>
-
-        
+    </div>      
 {{-- html del contenido de la páginaa --}}
-
-        
-{{-- @foreach ($campeonato as $item)
-    <div class="tabla-principal container mt-3">
-      <div class="row-tabla row ">
-        <div class="col-tabla col-md-6 text-center align-items-center">{{$item->nombre}}</div>
-      </div>
-  <div class="row row-tabla">
-    <div class="col-tabla col-md-3 text-center align-items-center">{{$item->modo}}</div>
-    <div class="col-tabla col-md-3 text-center align-items-center">{{$item->categoria}}</div>
-  </div>
-  <div class="row row-tabla">
-    <div class="col-tabla col-md-3 text-center align-items-center">{{$item->direccion}}</div>
-    <div class="col-tabla col-md-3 text-center align-items-center">{{$item->cantidad_equipos}}</div>
-  </div>
-<div class="row row-tabla">
-<div class="col-tabla col-md-3 text-center align-items-center">{{$item->precio_inscripcion}}</div>
-<div class="col-tabla col-md-3 text-center align-items-center">{{$item->valor_premiacion}}</div>
-</div>
-<div class="row-tabla row">
-<div class="col-tabla col-md-6 text-center align-items-center">{{$item->descripcion}}</div>
-</div>
-<div class="row row-tabla">
-  <div class="col-tabla col-2 text-center align-items-center"><a href="{{url('crearcampeonato')}}"><button type="button" class="btn btn-logout btn-outline-primary">Crear</button></a></div>
-
-  <div class="col-tabla col-2 text-center align-items-center"><a href="{{ route('campeonato.edit', ['id_campeonato' => $item->id_campeonato]) }}"><button type="button" class="btn btn-logout btn-outline-primary">Editar</button></a></div>
-
-  <div class="col-tabla col-2 text-center align-items-center"><a href="{{url('eliminarcampeonato')}}"><button type="button" class="btn btn-logout btn-outline-primary">Eliminar</button></a></div>
-</div>
-</div>
-@endforeach --}}
-
 <div class="container-fluid">
   <h1 class="text-center">Campeonatos</h1>
   <a href="{{url('crearcampeonato')}}"><button type="button" class="btn btn-logout btn-outline-primary">Crear campeonato</button></a>
+  <a href="{{url('/vercampeonato/campeonatopdf')}}"><button type="button" class="btn btn-logout btn-outline-primary">Ver reporte campeonatos</button></a>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">nombre</th>
-          <th scope="col">modo</th>
-          <th scope="col">categoria</th>
-          <th scope="col">direccion</th>
-          <th scope="col">cantidad de equipos</th>
-          <th scope="col">precio inscripcion</th>
-          <th scope="col">valor de premiacion</th>
-          <th scope="col">descripcion</th>
-          <th scope="col">editar</th>
-          <th scope="col">eliminar</th>
-
-
+          <th scope="col">Id campeonato</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Modo</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Direccion</th>
+          <th scope="col">Cantidad de equipos</th>
+          <th scope="col">Precio inscripcion</th>
+          <th scope="col">Valor de premiacion</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
         </tr>
       </thead>
       <tbody>
       @foreach ($campeonato as $item)
-
-
         <tr>
+          <td>{{$item->id_campeonato}}</td>
           <td>{{$item->nombre}}</td>
           <td>{{$item->modo}}</td>
           <td>{{$item->categoria}}</td>

@@ -37,34 +37,50 @@
 <body class="body">
     <p class="empresa">Club Leones</p>
     <p class="empresa">Logo</p>
-    <h1>Reporte perfil de jugadores</h1>
+    <h1>Reporte campeonatos</h1>
     <table class="table table-striped">
         <thead>
             <tr class="fila1">
-                <th scope="col">idperfil</th>
+                <th scope="col">id campeonato</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Usuario</th>
-                <th scope="col">Edad</th>
-                <th scope="col">Nivel de flexibilidad</th>
-                <th scope="col">Nivel de resistencia</th>
-                <th scope="col">Nivel de fuerza</th>
-                <th scope="col">id</th>
+                <th scope="col">Modo</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Cantidad de equipos</th>
+                <th scope="col">Precio inscripcion</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($perfil as $item)
+            @foreach ($campeonato as $item)
 
             <tr class="fila2">
-                <td>{{$item->id_perfil}}</td>
+                <td>{{$item->id_campeonato}}</td>
                 <td>{{$item->nombre}}</td>
-                <td>{{$item->email}}</td>
-                <td>{{$item->usuario}}</td>
-                <td>{{$item->edad}}</td>
-                <td>{{$item->nivel_flexibilidad}}</td>
-                <td>{{$item->nivel_resistencia}}</td>
-                <td>{{$item->nivel_fuerza}}</td>
-                <td>{{$item->id}}</td>
+                <td>{{$item->modo}}</td>
+                <td>{{$item->categoria}}</td>
+                <td>{{$item->direccion}}</td>
+                <td>{{$item->cantidad_equipos}}</td>
+                <td>{{$item->precio_inscripcion}}</td>
+            </tr>
+            @endforeach
+
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <thead>
+            <tr class="fila1">
+                <th scope="col">id campeonato</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Valor de premiacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($campeonato as $item)
+
+            <tr class="fila2">
+                <td>{{$item->id_campeonato}}</td>
+                <td>{{$item->descripcion}}</td>
+                <td>{{$item->valor_premiacion}}</td>
             </tr>
             @endforeach
 

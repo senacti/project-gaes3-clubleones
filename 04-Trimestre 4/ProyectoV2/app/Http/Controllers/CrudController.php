@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use App\Models\Campeonato;
 
 class CrudController extends Controller
@@ -12,6 +14,12 @@ class CrudController extends Controller
     public function index(){
         $campeonato = Campeonato::all();
         return view('vercampeonato')->with("campeonato", $campeonato);
+    }
+
+    public function pdf(){
+        $campeonato=Campeonato::all();
+        $pdf = Pdf::loadView('campeonatopdf', compact('campeonato'));
+        return $pdf->stream();
     }
     
     public function create(Request $request){

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use App\Models\planacondicionamiento;
 
 class CrudPlanacondicionamientoController extends Controller
@@ -12,6 +14,12 @@ class CrudPlanacondicionamientoController extends Controller
     public function index(){
         $planacondicionamiento = planacondicionamiento::all();
         return view('verplanacondicionamiento')->with("planacondicionamiento", $planacondicionamiento);
+    }
+
+    public function pdf(){
+        $planacondicionamiento=planacondicionamiento::all();
+        $pdf = Pdf::loadView('planacondicionamientopdf', compact('planacondicionamiento'));
+        return $pdf->stream();
     }
     
     public function create(Request $request){

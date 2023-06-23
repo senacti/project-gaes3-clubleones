@@ -14,8 +14,8 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                    <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
+                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
+                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -56,10 +56,7 @@
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <a href="../campeonatos/crearcampeonato.html"><div class="accordion-body">Crear campeonato</div></a>
-                <div class="accordion-body">Crear programación</div>
-                <div class="accordion-body">Agregar equipo</div>
-                <div class="accordion-body">Crear partido</div>
+                <a href="{{url('verentrenamiento')}}"><div class="accordion-body">Entrenamientos</div></a>
               </div>
             </div>
             <div class="accordion-item">
@@ -80,7 +77,7 @@
               @csrf
           </form>
           
-          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</button>
+          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</button>
           </div>
         </div>
     </div>
@@ -91,46 +88,50 @@
             <h1 class="text-center">Crear Test</h1>
             <form action="{{route("test.create")}}" method="POST">
               @csrf
-              <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-              </div>
-              <div class="mb-3">
-                <label for="tipo" class="form-label">Tipo</label>
-                <input type="text" class="form-control" id="tipo" name="tipo" required>
-              </div>
-              <div class="mb-3">
-                <label for="puntaje_minimo" class="form-label">Puntaje mínimo</label>
-                <input type="number" class="form-control" id="puntaje_minimo" name="puntaje_minimo" required>
-              </div>
-              <div class="mb-3">
-                <label for="puntaje_maximo" class="form-label">Puntaje máximo</label>
-                <input type="text" class="form-control" id="puntaje_maximo" name="puntaje_maximo" required>
-              </div>
-              <div class="mb-3">
-                <label for="puntaje_minimo_bajo" class="form-label">Puntaje mínimo bajo</label>
-                <input type="number" class="form-control" id="puntaje_minimo_bajo" name="puntaje_minimo_bajo" required>
-              </div>   
-              <div class="mb-3">
-                <label for="puntaje_maximo_bajo" class="form-label">Puntaje máximo bajo</label>
-                <input type="text" class="form-control" id="puntaje_maximo_bajo" name="puntaje_maximo_bajo" required>
-              </div>
-              <div class="mb-3">
-                <label for="puntaje_minimo_medio" class="form-label">Puntaje mínimo medio</label>
-                <input type="text" class="form-control" id="puntaje_minimo_medio" name="puntaje_minimo_medio" required>
-              </div>
-              <div class="mb-3">
-                <label for="puntaje_maximo_medio" class="form-label">Puntaje máximo medio</label>
-                <input type="number" class="form-control" id="puntaje_maximo_medio" name="puntaje_maximo_medio" required>
-              </div>
-              <div class="mb-3">
-                <label for="puntaje_minimo_alto" class="form-label">Puntaje mínimo alto</label>
-                <input type="number" class="form-control" id="puntaje_minimo_alto" name="puntaje_minimo_alto" required>
-              </div>
-              <div class="mb-3">
-                <label for="puntaje_maximo_alto" class="form-label">Puntaje máximo alto</label>
-                <input type="number" class="form-control" id="puntaje_maximo_alto" name="puntaje_maximo_alto" required>
-              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="tipo" class="form-label">Tipo</label>
+                    <input type="text" class="form-control" id="tipo" name="tipo" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="puntaje_minimo" class="form-label">Puntaje mínimo</label>
+                    <input type="number" class="form-control" id="puntaje_minimo" name="puntaje_minimo" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="puntaje_maximo" class="form-label">Puntaje máximo</label>
+                    <input type="number" class="form-control" id="puntaje_maximo" name="puntaje_maximo" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="puntaje_minimo_bajo" class="form-label">Puntaje mínimo bajo</label>
+                    <input type="number" class="form-control" id="puntaje_minimo_bajo" name="puntaje_minimo_bajo" required>
+                  </div>                 </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="puntaje_maximo_bajo" class="form-label">Puntaje máximo bajo</label>
+                    <input type="number" class="form-control" id="puntaje_maximo_bajo" name="puntaje_maximo_bajo" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="puntaje_minimo_medio" class="form-label">Puntaje mínimo medio</label>
+                    <input type="number" class="form-control" id="puntaje_minimo_medio" name="puntaje_minimo_medio" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="puntaje_maximo_medio" class="form-label">Puntaje máximo medio</label>
+                    <input type="number" class="form-control" id="puntaje_maximo_medio" name="puntaje_maximo_medio" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="puntaje_minimo_alto" class="form-label">Puntaje mínimo alto</label>
+                    <input type="number" class="form-control" id="puntaje_minimo_alto" name="puntaje_minimo_alto" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="puntaje_maximo_alto" class="form-label">Puntaje máximo alto</label>
+                    <input type="number" class="form-control" id="puntaje_maximo_alto" name="puntaje_maximo_alto" required>
+                  </div>
+                 </div>
               <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
                 <input type="text" class="form-control" id="descripcion" name="descripcion" required>

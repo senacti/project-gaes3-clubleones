@@ -37,34 +37,30 @@
 <body class="body">
     <p class="empresa">Club Leones</p>
     <p class="empresa">Logo</p>
-    <h1>Reporte perfil de jugadores</h1>
+    <h1>Reporte equipos</h1>
     <table class="table table-striped">
         <thead>
             <tr class="fila1">
-                <th scope="col">idperfil</th>
+                <th scope="col">Id equipo</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Usuario</th>
-                <th scope="col">Edad</th>
-                <th scope="col">Nivel de flexibilidad</th>
-                <th scope="col">Nivel de resistencia</th>
-                <th scope="col">Nivel de fuerza</th>
-                <th scope="col">id</th>
+                <th scope="col">Color equipacion 1</th>
+                <th scope="col">Color equipacion 2</th>
+                <th scope="col">Cantidad de jugadores</th>
+                <th scope="col">Pago de inscripción</th>
+                <th scope="col">id_campeonato</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($perfil as $item)
+            @foreach ($equipo as $item)
 
             <tr class="fila2">
-                <td>{{$item->id_perfil}}</td>
+                <td>{{$item->id_equipo}}</td>
                 <td>{{$item->nombre}}</td>
-                <td>{{$item->email}}</td>
-                <td>{{$item->usuario}}</td>
-                <td>{{$item->edad}}</td>
-                <td>{{$item->nivel_flexibilidad}}</td>
-                <td>{{$item->nivel_resistencia}}</td>
-                <td>{{$item->nivel_fuerza}}</td>
-                <td>{{$item->id}}</td>
+                <td>{{$item->color_equipacion}}</td>
+                <td>{{$item->color_equipacion2}}</td>
+                <td>{{$item->cantidad_jugadores}}</td>
+                <td>{{$item->pago_inscripcion}}</td>
+                <td>{{$item->id_campeonato}}</td>
             </tr>
             @endforeach
 

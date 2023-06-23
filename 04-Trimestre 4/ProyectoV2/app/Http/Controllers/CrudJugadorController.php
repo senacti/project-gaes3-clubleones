@@ -53,7 +53,7 @@ public function create(Request $request, $id_equipo)
     
         $item->save();
     
-        return redirect()->route('jugador.index')->with('success', 'el jugador se ha actualizado correctamente.');
+        return redirect()->route('jugador.index', ['id_equipo' => $item->id_equipo])->with('success', 'el jugador se ha actualizado correctamente.');
     }
     
 

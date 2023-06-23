@@ -14,8 +14,8 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                    <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
+                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
+                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -56,10 +56,8 @@
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <a href="../campeonatos/crearcampeonato.html"><div class="accordion-body">Crear campeonato</div></a>
-                <div class="accordion-body">Crear programación</div>
-                <div class="accordion-body">Agregar equipo</div>
-                <div class="accordion-body">Crear partido</div>
+                <a href="{{url('verentrenamiento')}}"><div class="accordion-body">Entrenamientos</div></a>
+
               </div>
             </div>
             <div class="accordion-item">
@@ -80,7 +78,7 @@
               @csrf
           </form>
           
-          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</button>
+          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</button>
           </div>
         </div>
     </div>
@@ -88,7 +86,7 @@
 {{-- html del contenido de la páginaa --}}
 
         <div class="container">
-            <h1 class="text-center">Editar Partido</h1>
+            <h1 class="text-center">Editar partido</h1>
             <form action="{{ route('partido.update', ['id_partido' => $partido->id_partido]) }}" method="post">
                 @method('PUT')
                 @csrf
@@ -98,66 +96,66 @@
               </div>
               <div class="mb-3">
                 <label for="equipo2" class="form-label">Equipo 2</label>
-                <input type="text" class="form-control" id="equipo2" name="equipo2" required>
+                <input type="text" class="form-control" id="equipo2" name="equipo2" value="{{ $partido->equipo2 }}" required>
               </div>
               <div class="mb-3">
                 <label for="goles_equipo1" class="form-label">Goles equipo 1</label>
-                <input type="text" class="form-control" id="goles_equipo1" name="goles_equipo1" required>
+                <input type="number" class="form-control" id="goles_equipo1" name="goles_equipo1" value="{{ $partido->goles_equipo1 }}" required>
               </div>
               <div class="mb-3">
                 <label for="jugador_marco_gol_equipo1" class="form-label">jugador que hace gol en equipo 1</label>
-                <input type="text" class="form-control" id="jugador_marco_gol_equipo1" name="jugador_marco_gol_equipo1" required>
+                <input type="text" class="form-control" id="jugador_marco_gol_equipo1" name="jugador_marco_gol_equipo1" value="{{ $partido->jugador_marco_gol_equipo1 }}" required>
               </div>
               <div class="mb-3">
                 <label for="goles_equipo2" class="form-label">Goles equipo 1</label>
-                <input type="text" class="form-control" id="goles_equipo2" name="goles_equipo2" required>
+                <input type="number" class="form-control" id="goles_equipo2" name="goles_equipo2" value="{{ $partido->goles_equipo2 }}" required>
               </div>   
               <div class="mb-3">
                 <label for="jugador_marco_gol_equipo2" class="form-label">jugador que hace gol en equipo 2</label>
-                <input type="text" class="form-control" id="jugador_marco_gol_equipo2" name="jugador_marco_gol_equipo2" required>
+                <input type="text" class="form-control" id="jugador_marco_gol_equipo2" name="jugador_marco_gol_equipo2" value="{{ $partido->jugador_marco_gol_equipo2 }}" required>
               </div>
               <div class="mb-3">
                 <label for="resultado" class="form-label">Resultado</label>
-                <input type="text" class="form-control" id="resultado" name="resultado" required>
+                <input type="text" class="form-control" id="resultado" name="resultado" value="{{ $partido->resultado }}" required>
               </div>
               <div class="mb-3">
                 <label for="faltas_cometidas_equipo1" class="form-label">Faltas cometidas por el equipo 1</label>
-                <input type="text" class="form-control" id="faltas_cometidas_equipo1" name="faltas_cometidas_equipo1" required>
+                <input type="number" class="form-control" id="faltas_cometidas_equipo1" name="faltas_cometidas_equipo1" value="{{ $partido->faltas_cometidas_equipo1 }}" required>
               </div>
               <div class="mb-3">
                 <label for="faltas_cometidas_equipo2" class="form-label">Faltas cometidas por el equipo 2</label>
-                <input type="text" class="form-control" id="faltas_cometidas_equipo2" name="faltas_cometidas_equipo2" required>
+                <input type="number" class="form-control" id="faltas_cometidas_equipo2" name="faltas_cometidas_equipo2" value="{{ $partido->faltas_cometidas_equipo2 }}" required>
               </div>
               <div class="mb-3">
                 <label for="tarjetas_amarillas_equipo1" class="form-label">Tarjetas amarillas del equipo 1</label>
-                <input type="text" class="form-control" id="tarjetas_amarillas_equipo1" name="tarjetas_amarillas_equipo1" required>
+                <input type="number" class="form-control" id="tarjetas_amarillas_equipo1" name="tarjetas_amarillas_equipo1" value="{{ $partido->tarjetas_amarillas_equipo1 }}" required>
               </div>
               <div class="mb-3">
                 <label for="tarjetas_amarillas_equipo2" class="form-label">Tarjetas amarillas del equipo 2</label>
-                <input type="text" class="form-control" id="tarjetas_amarillas_equipo2" name="tarjetas_amarillas_equipo2" required>
+                <input type="number" class="form-control" id="tarjetas_amarillas_equipo2" name="tarjetas_amarillas_equipo2" value="{{ $partido->tarjetas_amarillas_equipo2 }}" required>
               </div>
               <div class="mb-3">
                 <label for="tarjetas_rojas_equipo1" class="form-label">Tarjetas rojas del equipo 1</label>
-                <input type="text" class="form-control" id="tarjetas_rojas_equipo1" name="tarjetas_rojas_equipo1" required>
+                <input type="number" class="form-control" id="tarjetas_rojas_equipo1" name="tarjetas_rojas_equipo1" value="{{ $partido->tarjetas_rojas_equipo1 }}" required>
               </div>
               <div class="mb-3">
                 <label for="tarjetas_rojas_equipo2" class="form-label">Tarjetas rojas del equipo 2</label>
-                <input type="text" class="form-control" id="tarjetas_rojas_equipo2" name="tarjetas_rojas_equipo2" required>
+                <input type="number" class="form-control" id="tarjetas_rojas_equipo2" name="tarjetas_rojas_equipo2" value="{{ $partido->tarjetas_rojas_equipo2 }}" required>
               </div>
               <div class="mb-3">
                 <label for="pago_arbitraje_equipo1" class="form-label">Pago de arbitraje equipo 1</label>
-                <input type="text" class="form-control" id="pago_arbitraje_equipo1" name="pago_arbitraje_equipo1" required>
+                <input type="text" class="form-control" id="pago_arbitraje_equipo1" name="pago_arbitraje_equipo1" value="{{ $partido->pago_arbitraje_equipo1 }}" required>
               </div>
               <div class="mb-3">
                 <label for="pago_arbitraje_equipo2" class="form-label">Pago de arbitraje equipo 2</label>
-                <input type="text" class="form-control" id="pago_arbitraje_equipo2" name="pago_arbitraje_equipo2" required>
+                <input type="text" class="form-control" id="pago_arbitraje_equipo2" name="pago_arbitraje_equipo2" value="{{ $partido->pago_arbitraje_equipo2 }}" required>
               </div>
               <div class="mb-3">
                 <label for="id_campeonato" class="form-label">id_campeonato</label>
-                <input type="number" class="form-control" id="id_campeonato" name="id_campeonato" required>
+                <input type="number" class="form-control" id="id_campeonato" name="id_campeonato" value="{{ $partido->id_campeonato }}" required>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
               </div>
             </form>
           </div>

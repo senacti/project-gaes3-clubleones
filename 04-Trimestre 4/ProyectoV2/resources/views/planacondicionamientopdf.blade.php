@@ -40,19 +40,19 @@
     <table class="table table-striped">
         <thead>
             <tr class="fila1">
-                <th scope="col">Id test</th>
                 <th scope="col">Nombre</th>
+                <th scope="col">Categoría</th>
                 <th scope="col">Tipo</th>
-                <th scope="col">descripción</th>
+                <th scope="col">Descripción</th>
                 <th scope="col">id_perfil</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($test as $item)
+            @foreach ($planacondicionamiento as $item)
 
             <tr class="fila2">
-                <td>{{$item->id_test}}</td>
                 <td>{{$item->nombre}}</td>
+                <td>{{$item->categoria}}</td>
                 <td>{{$item->tipo}}</td>
                 <td>{{$item->descripcion}}</td>
                 <td>{{$item->id_perfil}}</td>
@@ -60,39 +60,6 @@
             @endforeach
 
         </tbody>
-    </table>
-    <table class="table table-striped">
-        <thead>
-            <tr class="fila1">
-                <th scope="col">Id test</th>
-                <th scope="col">Puntaje mínimo</th>
-                <th scope="col">Puntaje máximo</th>
-                <th scope="col">Puntaje mínimo bajo</th>
-                <th scope="col">Puntaje máximo bajo</th>
-                <th scope="col">Puntaje mínimo medio</th>
-                <th scope="col">Puntaje máximo medio</th>
-                <th scope="col">Puntaje mínimo alto</th>
-                <th scope="col">Puntaje máximo alto</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($test as $item)
-
-            <tr class="fila2">
-                <td>{{$item->id_test}}</td>
-                <td>{{$item->puntaje_minimo}}</td>
-                <td>{{$item->puntaje_maximo}}</td>
-                <td>{{$item->puntaje_minimo_bajo}}</td>
-                <td>{{$item->puntaje_maximo_bajo}}</td>
-                <td>{{$item->puntaje_minimo_medio}}</td>
-                <td>{{$item->puntaje_maximo_medio}}</td>
-                <td>{{$item->puntaje_minimo_alto}}</td>
-                <td>{{$item->puntaje_maximo_alto}}</td>
-            </tr>
-            @endforeach
-
-        </tbody>
-    </table>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> --}}
+    </table>      {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> --}}
 </body>
 </html>

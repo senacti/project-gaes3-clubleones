@@ -14,8 +14,8 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                    <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
+                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
+                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -56,10 +56,8 @@
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <a href="../campeonatos/crearcampeonato.html"><div class="accordion-body">Crear campeonato</div></a>
-                <div class="accordion-body">Crear programación</div>
-                <div class="accordion-body">Agregar equipo</div>
-                <div class="accordion-body">Crear partido</div>
+                <a href="{{url('verentrenamiento')}}"><div class="accordion-body">Entrenamientos</div></a>
+
               </div>
             </div>
             <div class="accordion-item">
@@ -80,7 +78,7 @@
               @csrf
           </form>
           
-          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</button>
+          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</button>
           </div>
         </div>
     </div>
@@ -94,30 +92,30 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $ejercicio->nombre }}" required>
                   </div>
                   <div class="mb-3">
                     <label for="imagen" class="form-label">Imagen</label>
-                    <input type="text" class="form-control" id="imagen" name="imagen" required>
+                    <input type="file" class="form-control" id="imagen" name="imagen" value="{{ $ejercicio->ruta }}" required>
                   </div>
                   <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripcion</label>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ $ejercicio->descripcion }}" required>
                   </div>
                   <div class="mb-3">
                     <label for="cantidad" class="form-label">Cantidad</label>
-                    <input type="text" class="form-control" id="cantidad" name="cantidad" required>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="{{ $ejercicio->cantidad }}" required>
                   </div>
                   <div class="mb-3">
                     <label for="segundos" class="form-label">Segundos</label>
-                    <input type="text" class="form-control" id="segundos" name="segundos" required>
+                    <input type="number" class="form-control" id="segundos" name="segundos" value="{{ $ejercicio->segundos }}" required>
                   </div>  
                   <div class="mb-3">
                     <label for="id_planacondicionamiento" class="form-label">id_planacondicionamiento</label>
-                    <input type="number" class="form-control" id="id_planacondicionamiento" name="id_planacondicionamiento">
+                    <input type="number" class="form-control" id="id_planacondicionamiento" name="id_planacondicionamiento" value="{{ $ejercicio->id_planacondicionamiento }}">
                   </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
               </div>
             </form>
           </div>

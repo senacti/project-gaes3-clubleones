@@ -14,8 +14,8 @@
         <nav class="navbar">
             <div class="fondo container-fluid justify-content-between">
                 <div class="fondo d-flex align-items-center">
-                    <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                    <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
+                    {{-- <a class="navbar-brand" href="{{url('/dashboard')}}">LOGO</a> --}}
+                    <a class="empresa nav-link" href="{{url('/dashboard')}}">Club Leones</a>
                 </div>
                 <div class="fondo d-flex align-items-center">
                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -56,10 +56,8 @@
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <a href="../campeonatos/crearcampeonato.html"><div class="accordion-body">Crear campeonato</div></a>
-                <div class="accordion-body">Crear programación</div>
-                <div class="accordion-body">Agregar equipo</div>
-                <div class="accordion-body">Crear partido</div>
+                <a href="{{url('verentrenamiento')}}"><div class="accordion-body">Entrenamientos</div></a>
+
               </div>
             </div>
             <div class="accordion-item">
@@ -80,7 +78,7 @@
               @csrf
           </form>
           
-          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</button>
+          <button type="button" class="btn btn-logout btn-outline-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</button>
           </div>
         </div>
     </div>
@@ -121,11 +119,12 @@
 
 <div class="container-fluid">
   <h1 class="text-center">Programación</h1>
-  <a href="{{url('crearprogramacion')}}"><button type="button" class="btn btn-logout btn-outline-primary">Crear programacion</button></a>
+  <a href="{{url('crearprogramacion')}}"><button type="button" class="btn btn-logout btn-outline-primary">Crear programación</button></a>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
+          <th scope="col">Id programación</th>
           <th scope="col">Fecha</th>
           <th scope="col">Hora</th>
           <th scope="col">Categoría</th>
@@ -133,7 +132,7 @@
           <th scope="col">Equipo 2</th>
           <th scope="col">Precio de arbitraje</th>
           <th scope="col">Dirección</th>
-          <th scope="col">id_campeonato</th>
+          <th scope="col">Id campeonato</th>
         </tr>
       </thead>
       <tbody>
@@ -141,6 +140,7 @@
 
 
         <tr>
+          <td>{{$item->id_programacion}}</td>
           <td>{{$item->fecha}}</td>
           <td>{{$item->hora}}</td>
           <td>{{$item->categoria}}</td>

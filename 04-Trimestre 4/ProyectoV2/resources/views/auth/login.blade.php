@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="fondo container-fluid justify-content-center">
         <div class="fondo d-flex align-items-center">
-          <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
+          {{-- <a class="navbar-brand" href="{{url('/')}}">LOGO</a> --}}
           <a class="empresa nav-link" href="{{url('/')}}">Club Leones</a>
         </div>
       </div>

@@ -85,79 +85,32 @@
 {{-- html del contenido de la páginaa --}}
 
         <div class="container">
-            <h1 class="text-center">Crear Partido</h1>
-            <form action="{{route("partido.create")}}" method="POST">
+            <h1 class="text-center">Actualizar Entrenamiento</h1>
+            <form action="{{ route('entrenamiento.update', ['id_entrenamiento' => $entrenamiento->id_entrenamiento]) }}" method="post">
+              @method('PUT')
               @csrf
               <div class="mb-3">
-                <label for="equipo1" class="form-label">Equipo 1</label>
-                <input type="text" class="form-control" id="equipo1" name="equipo1" required>
+                <label for="fecha" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" 
+                value="{{ $entrenamiento->fecha }}" required>
               </div>
               <div class="mb-3">
-                <label for="equipo2" class="form-label">Equipo 2</label>
-                <input type="text" class="form-control" id="equipo2" name="equipo2" required>
+                <label for="hora" class="form-label">Hora</label>
+                <input type="time" class="form-control" id="hora" name="hora" value="{{ $entrenamiento->hora }}" required>
               </div>
               <div class="mb-3">
-                <label for="goles_equipo1" class="form-label">Goles equipo 1</label>
-                <input type="number" class="form-control" id="goles_equipo1" name="goles_equipo1" required>
+                <label for="tipo_entrenamiento" class="form-label">Tipo de entrenamiento</label>
+                <input type="text" class="form-control" id="tipo_entrenamiento" name="tipo_entrenamiento" value="{{ $entrenamiento->tipo_entrenamiento }}" required>
               </div>
               <div class="mb-3">
-                <label for="jugador_marco_gol_equipo1" class="form-label">jugador que hace gol en el equipo 1</label>
-                <input type="text" class="form-control" id="jugador_marco_gol_equipo1" name="jugador_marco_gol_equipo1" required>
-              </div>
-              <div class="mb-3">
-                <label for="goles_equipo2" class="form-label">Goles equipo 1</label>
-                <input type="number" class="form-control" id="goles_equipo2" name="goles_equipo2" required>
-              </div>   
-              <div class="mb-3">
-                <label for="jugador_marco_gol_equipo2" class="form-label">jugador que hace gol en el equipo 2</label>
-                <input type="text" class="form-control" id="jugador_marco_gol_equipo2" name="jugador_marco_gol_equipo2" required>
-              </div>
-              <div class="mb-3">
-                <label for="resultado" class="form-label">Resultado</label>
-                <input type="text" class="form-control" id="resultado" name="resultado" required>
-              </div>
-              <div class="mb-3">
-                <label for="faltas_cometidas_equipo1" class="form-label">Faltas cometidas por el equipo 1</label>
-                <input type="number" class="form-control" id="faltas_cometidas_equipo1" name="faltas_cometidas_equipo1" required>
-              </div>
-              <div class="mb-3">
-                <label for="faltas_cometidas_equipo2" class="form-label">Faltas cometidas por el equipo 2</label>
-                <input type="number" class="form-control" id="faltas_cometidas_equipo2" name="faltas_cometidas_equipo2" required>
-              </div>
-              <div class="mb-3">
-                <label for="tarjetas_amarillas_equipo1" class="form-label">Tarjetas amarillas del equipo 1</label>
-                <input type="number" class="form-control" id="tarjetas_amarillas_equipo1" name="tarjetas_amarillas_equipo1" required>
-              </div>
-              <div class="mb-3">
-                <label for="tarjetas_amarillas_equipo2" class="form-label">Tarjetas amarillas del equipo 2</label>
-                <input type="number" class="form-control" id="tarjetas_amarillas_equipo2" name="tarjetas_amarillas_equipo2" required>
-              </div>
-              <div class="mb-3">
-                <label for="tarjetas_rojas_equipo1" class="form-label">Tarjetas rojas del equipo 1</label>
-                <input type="number" class="form-control" id="tarjetas_rojas_equipo1" name="tarjetas_rojas_equipo1" required>
-              </div>
-              <div class="mb-3">
-                <label for="tarjetas_rojas_equipo2" class="form-label">Tarjetas rojas del equipo 2</label>
-                <input type="number" class="form-control" id="tarjetas_rojas_equipo2" name="tarjetas_rojas_equipo2" required>
-              </div>
-              <div class="mb-3">
-                <label for="pago_arbitraje_equipo1" class="form-label">Pago de arbitraje equipo 1</label>
-                <input type="text" class="form-control" id="pago_arbitraje_equipo1" name="pago_arbitraje_equipo1" required>
-              </div>
-              <div class="mb-3">
-                <label for="pago_arbitraje_equipo2" class="form-label">Pago de arbitraje equipo 2</label>
-                <input type="text" class="form-control" id="pago_arbitraje_equipo2" name="pago_arbitraje_equipo2" required>
-              </div>
-              <div class="mb-3">
-                <label for="id_campeonato" class="form-label">id_campeonato</label>
-                <input type="number" class="form-control" id="id_campeonato" name="id_campeonato" required>
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input class="form-control" id="descripcion" name="descripcion" value="{{ $entrenamiento->descripcion }}" required>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
               </div>
             </form>
           </div>
-
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
